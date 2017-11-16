@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit api to frontend</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular-route.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+    <div id="ng-app" ng-controller="AjaxController">
+
+        Sub Reddit result: <input ng-model="subredit" type="text" /> Type :
+        <select ng-model="type">
+        <option ng-repeat="rtype in types ">{{rtype}}</option>
+    </select>
+
+        <button class="label label-warning" ng-click="getit()">Display</button>
+        <BR>
+        <md-card ng-repeat="element in elements ">
+            <md-card-content>
+                <h3><span class="md-headline">{{element.score}}</span> | {{element.title}}</h3>
+                <p>
+                    <small class="label label-success"><i class="fa fa-link"></i><a ng-href='http://reddit.com{{element.permalink}}' target='_blank'>REDDIT LINK</a></small>
+                    <small class="label label-warning"><i class="fa fa-link"></i><a ng-href='{{element.url}}' target='_blank'>URL</a></small>
+                    <small class="label label-info"><i class="fa fa-user-md"></i> {{element.author}}</small>
+                    <small class="label label-warning"><i class="fa fa-thumbs-up"></i> {{element.ups}}</small>
+                    <small class="label label-success"><i class="fa fa-thumbs-down"></i> {{element.downs}}</small>
+                </p>
+            </md-card-content>
+        </md-card>
+
+    </div>
+    <script src="reddit-api-to-front-end.js"></script>
+</body>
+
+</html>
